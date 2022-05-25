@@ -1,4 +1,4 @@
-FROM 468715330816.dkr.ecr.us-east-2.amazonaws.com/wp:latest
+FROM public.ecr.aws/bitnami/wordpress:5.9.3-debian-10-r51
 
 # RUN apt-get update && apt-get install -y zlib1g-dev libpq-dev libmemcached-dev
 
