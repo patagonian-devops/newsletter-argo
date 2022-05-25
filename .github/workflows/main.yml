@@ -27,7 +27,8 @@ jobs:
 
     - name: Build, tag, and push image 
       id: build-image
-
+      env:
+        PROJECT_ID: ${{ secrets.PROJECT_ID }}
       run: |
         # Build a docker container and push it to GCR
         git_hash=$(git rev-parse --short "$GITHUB_SHA")
