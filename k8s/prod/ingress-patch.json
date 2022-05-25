@@ -1,0 +1,17 @@
+[
+    { 
+        "op": "replace", 
+        "path": "/spec/rules/0/host", 
+        "value": "patagonian.com"
+    },
+    {
+        "op": "replace",
+        "path": "/spec/rules/0/http/paths/0/backend/service/name",
+        "value": "ptech-news"
+    },
+    {
+        "op": "replace",
+        "path": "/spec/rules/0/http/paths/1/backend/service/name",
+        "value": "ptech-news"
+    }
+  ]

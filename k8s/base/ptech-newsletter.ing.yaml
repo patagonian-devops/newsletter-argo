@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.org/mergeable-ingress-type: "minion"
+  name: patagonian-newsletter
+  namespace: ptech-news
+spec:
+  rules:
+  - host: uat.patagonian.it
+    http:
+      paths:
+      - path: /techinsights
+        pathType: Prefix
+        backend:
+          service:
+            name: ptech-news
+            port:
+              number: 80
+      - path: /techinsights/*
+        pathType: Prefix
+        backend:
+          service:
+            name: ptech-news-uat
+            port:
+              number: 80

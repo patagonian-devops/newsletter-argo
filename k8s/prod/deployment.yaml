@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ptech-newsletter
+spec:
+  selector:
+    matchLabels:
+      app: prod-ptech-news
+  template:
+    metadata:
+      labels:
+        app: prod-ptech-news
+    spec:
+      serviceAccountName: prod-ptech-news
+      containers:
+      - name: ptech-newsletter
+        image: gcr.io/patagonian-infra/ptechnews-prod:latest-mass
+      volumes:
+      - name: wordpress-db-password
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: prod-wordpress-db-password

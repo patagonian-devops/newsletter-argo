@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ptech-newsletter
+spec:
+  selector:
+    matchLabels:
+      app: ptech-news
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ptech-news
+    spec:
+      restartPolicy: Always
+      initContainers:
+      - name: init-myservice
+        image: busybox:1.28
+        command: ['sh', '-c', 'sed "s/##DB_PASSWORD##/`cat /mnt/secrets-store/password.txt`/g" /tmp/wp-config.php > /tmp/artifact/wp-config.php']
+        volumeMounts:
+        - name: wordpress-db-password
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
+        - name: tmp
+          mountPath: /tmp/artifact
+        - mountPath: /tmp/wp-config.php                            
+          name: wp-config                                                   
+          subPath: wp-config.php  
+      containers:
+      - name: ptech-newsletter
+        image: gcr.io/patagonian-infra/ptechnews:latest
+        command: ['sh','-c','mv /tmp/artifact/wp-config.php /var/www/html/techinsights/wp-config.php;apache2-foreground']
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: default-token-p887m
+          readOnly: true
+        - name: tmp
+          mountPath: /tmp/artifact
+      volumes:
+      - name: default-token-p887m
+        secret:
+          defaultMode: 420
+          secretName: default-token-p887m
+      - name: wp-config
+        configMap:                                                          
+          defaultMode: 420                                                  
+          name: wp-config                                                
+      - name: tmp
+        emptyDir: {}

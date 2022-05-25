@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: ptech-news
+
+resources:
+- ptech-newsletter-wp-config.cm.yaml
+- ptech-newsletter.de.yaml
+- ptech-newsletter.ing.yaml
+- ptech-newsletter.sa.yaml
+- ptech-newsletter.spc.yaml
+- ptech-newsletter.svc.yaml

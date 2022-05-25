@@ -1,0 +1,52 @@
+Version: 1.3.5
+    Added: 		Theme option that allows to invert the colors of the logo in a dark scheme
+	Updated: 	Category page view
+	Fixed: 		Icons
+				AMP validation (removed !important)
+				Gallery widget view after WP update
+				Custom submenu bugs on iPad
+				Video post bugs in Slider widget
+				Post formats styles in Blogger widget (List type)
+				Variable product page view after WooCommerce update
+
+Version: 1.3.4
+    Updated: 	Widget Slider
+    Added: 		Remove button for theme skins
+
+Version: 1.3.3
+    Added: 		WP GDPR Compliance fix
+	
+Version: 1.3.2
+    Updated: 	Widget Video List styles
+				Post editor styles
+				AJAX search result styles
+				Mobile site view
+    Fixed: 		AMP validation
+				Hiding blocks on the responsive
+				Lazy loading of banners on post pages
+
+Version: 1.3.1
+    Fixed: 	Loading new fonts in the Theme Options
+			 
+Version: 1.3.0
+    Added: 		Reading time for posts
+				Color scheme switcher
+				Single post style #15 (without featured image)
+				Boxed page layout
+				Normal content width for single posts
+				Related posts options for single posts		   
+    Updated: 	Posts content styles
+				Theme options
+
+Version: 1.2.2
+    Fixed: 		Theme Options - Typography settings
+    Fixed: 		Reviews counter
+
+Version: 1.2.0
+    Added: 		Speed Optimization (Part 1)
+    Fixed: 		Demo Data Import
+	
+Version: 1.0.1
+    Fix: 		CSS grid fix (elementor)
+
+Release 1.0.0
