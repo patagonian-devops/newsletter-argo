@@ -32,6 +32,7 @@ jobs:
       run: |
         # Build a docker container and push it to GCR
         git_hash=$(git rev-parse --short "$GITHUB_SHA")
+        cd code
         docker build -t gcr.io/$PROJECT_ID/ptechnews:$git_hash .
         echo "Pushing image to GCR..."
         gcloud auth configure-docker -q
