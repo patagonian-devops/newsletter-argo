@@ -7,6 +7,7 @@ on:
     branches: [ main ]
     paths:
       - code/**
+      - .github/**
 jobs:
   build:
     name: Build and Pushing the Image
