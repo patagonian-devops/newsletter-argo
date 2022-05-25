@@ -37,7 +37,7 @@ jobs:
         docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:$git_hash .
         echo "Pushing image to GCR..."
         gcloud auth configure-docker -q
-        docker push eu.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
+        docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
         echo "::set-output name=image::gcr.io/$PROJECT_ID/$SERVICE_NAME:$git_hash"
         
     - name: Update Version UAT
