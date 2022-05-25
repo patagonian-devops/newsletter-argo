@@ -15,7 +15,7 @@ jobs:
 
     steps:
 
-    - uses: GoogleCloudPlatform/github-actions/auth@v0
+    - uses: google-github-actions/auth@v0
       with:
         service_account_key: ${{ secrets.GCR_DEVOPS_SERVICE_ACCOUNT_KEY }}
         project_id: ${{ secrets.PROJECT_ID }}
@@ -26,7 +26,7 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v3
-      
+
     - name: Build, tag, and push image 
       id: build-image
 
