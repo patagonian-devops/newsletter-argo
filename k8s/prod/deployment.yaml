@@ -14,7 +14,7 @@ spec:
       serviceAccountName: prod-ptech-news
       containers:
       - name: ptech-newsletter
-        image: gcr.io/patagonian-infra/ptechnews-prod:latest-mass
+        image: gcr.io/patagonian-infra/ptechnews:a023a7f
       volumes:
       - name: wordpress-db-password
         csi:
