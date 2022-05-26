@@ -51,9 +51,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Update Version UAT
+        env:
+          docker_image: ${{ needs.build.outputs.docker_image }}
         run: |
             version=$(cat ./k8s/uat/deployment.yaml | grep image: | awk '{print $2}' | sed 's/\//\\\//g')
-            docker_image=$(echo ${{ needs.build.outputs.docker_image }} | sed 's/\//\\\//g')
+            docker_image=$(echo $docker_image | sed 's/\//\\\//g')
             sed -i "s/$version/$docker_image/g" ./k8s/uat/deployment.yaml
             
       - name: Commit and push changes
