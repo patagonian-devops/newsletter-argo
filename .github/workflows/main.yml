@@ -46,6 +46,7 @@ jobs:
     name: Deploy to Dev
     needs: build
     environment: uat
+    runs-on: ubuntu-latest
     steps:
       - name: Get Manifest File
         uses: actions/checkout@v2
@@ -66,6 +67,7 @@ jobs:
     name: Deploy to Prod
     needs: build
     environment: prod
+    runs-on: ubuntu-latest
     steps:
       - name: Get Manifest File
         uses: actions/checkout@v2
