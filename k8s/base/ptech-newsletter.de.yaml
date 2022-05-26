@@ -29,7 +29,7 @@ spec:
       containers:
       - name: ptech-newsletter
         image: gcr.io/patagonian-infra/ptechnews:latest
-        command: ['sh','-c','mv /tmp/artifact/wp-config.php /var/www/html/techinsights/wp-config.php;apache2-foreground']
+        command: ['sh','-c','mv /tmp/artifact/wp-config.php /usr/share/nginx/html/wp-config.php;nginx -g daemon off']
         ports:
         - containerPort: 80
         volumeMounts:
