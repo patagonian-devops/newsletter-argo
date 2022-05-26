@@ -14,7 +14,7 @@ spec:
       serviceAccountName: uat-ptech-news
       containers:
       - name: ptech-newsletter
-        image: gcr.io/patagonian-infra/ptechnews:11f84df
+        image: 
       volumes:
       - name: wordpress-db-password
         csi:
