@@ -14,7 +14,7 @@ spec:
       serviceAccountName: uat-ptech-news
       containers:
       - name: ptech-newsletter
-        image: $DOCKER_IMAGE
+        image: 
       volumes:
       - name: wordpress-db-password
         csi:
