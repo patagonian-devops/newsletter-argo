@@ -7,7 +7,6 @@ on:
     branches: [ main ]
     paths:
       - code/**
-      - .github/**
 jobs:
   build:
     name: Build and Push
@@ -61,7 +60,7 @@ jobs:
         uses: devops-infra/action-commit-push@v0.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: Version updated
+          commit_message: Version updated for UAT
 
   deploy-prod:
     name: Deploy to Prod
@@ -71,15 +70,17 @@ jobs:
     steps:
       - name: Get Manifest File
         uses: actions/checkout@v2
+        with:
+          ref: master
 
       - name: Update Version PROD
         run: |
-            version=$(cat ./k8s/prod/deployment.yaml | grep image: | awk '{print $2}' | sed 's/\//\\\//g')
-            docker_image=$(echo ${{ needs.build.outputs.docker_image }} | sed 's/\//\\\//g')
-            sed -i "s/$version/$docker_image/g" ./k8s/prod/deployment.yaml
+          version=$(cat ./k8s/prod/deployment.yaml | grep image: | awk '{print $2}' | sed 's/\//\\\//g')
+          docker_image=$(echo ${{ needs.build.outputs.docker_image }} | sed 's/\//\\\//g')
+          sed -i "s/$version/$docker_image/g" ./k8s/prod/deployment.yaml
             
       - name: Commit and push changes
         uses: devops-infra/action-commit-push@v0.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: Version updated
+          commit_message: Version updated for PROD
