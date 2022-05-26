@@ -38,7 +38,7 @@ jobs:
           docker push $DOCKER_IMAGE
           echo "New docker image $DOCKER_IMAGE ready"
           rm -rf ../gha-creds-*.json
-          run: echo "::set-output name=docker_image::$DOCKER_IMAGE"
+          echo "::set-output name=docker_image::$DOCKER_IMAGE"
     outputs:
       docker_image: ${{ steps.build-image.outputs.docker_image }}
 
