@@ -8,7 +8,7 @@ metadata:
   namespace: ptech-news
 spec:
   rules:
-  - host: uat.patagonian.it
+  - host: uat.patagonian.com
     http:
       paths:
       - path: /techinsights
