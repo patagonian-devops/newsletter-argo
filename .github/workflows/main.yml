@@ -39,7 +39,7 @@ jobs:
           echo "New docker image $DOCKER_IMAGE ready"
           rm -rf ../gha-creds-*.json
     outputs:
-      docker_image: $DOCKER_IMAGE
+      docker_image: ${{ DOCKER_IMAGE }}
 
   deploy-dev:
     name: Deploy to Dev
