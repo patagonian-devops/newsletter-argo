@@ -74,7 +74,7 @@ jobs:
       - name: Get Manifest File
         uses: actions/checkout@v2
         with:
-          ref: master
+          ref: main
 
       - name: Update Version PROD
         run: |
